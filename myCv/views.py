@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from myCv.models import GeneralSetting, ImageSettings
+from myCv.models import GeneralSetting, ImageSettings, Skill
 
 # Create your views here.
 def index(request):
@@ -17,6 +17,10 @@ def index(request):
     header_logo = ImageSettings.objects.get(name='header_logo').file
     home_banner_image = ImageSettings.objects.get(name='home_banner_image').file
     site_favicon = ImageSettings.objects.get(name='site_favicon').file
+
+    # Skills
+    skills = Skill.objects.all().order_by('order')
+
     context = {
         'site_title': site_title,
         'site_keywords': site_keywords,
@@ -29,6 +33,7 @@ def index(request):
         'header_logo': header_logo,
         'home_banner_image': home_banner_image,
         'site_favicon': site_favicon,
+        'skills': skills,
     }
     return render(request, 'index.html',context=(context))
 
