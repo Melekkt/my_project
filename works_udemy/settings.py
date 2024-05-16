@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from ctypes import cast
 from pathlib import Path
 import environ
 
@@ -24,11 +24,9 @@ DEBUG = env("DEBUG")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list)
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list)# Application definition
 
-# Application definition
-
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,7 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'myCv.apps.MycvConfig',
     'contact',
-)
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
