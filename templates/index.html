@@ -25,11 +25,11 @@
                                     <li><a href="#"><i class="lnr lnr-home"></i>Kocaeli/Darıca</a></li>
                                 </ul>
                                 <ul class="list personal_social">
-                                    <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                    {% for social in social_media %}
+                                       <li><a href ="{{ social.link }}" target="_blank">{{ social.icon|safe }}</a></li>
+                                    {% endfor %}
                                 </ul>
-                            </div>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="col-lg-6">
                     <div class="tools_expert">
                         <div class="skill_main">
-                         
+
                          {% for skill in skills %}
                             <div class="skill_item">
                                  <h4>{{ skill.name }} <span class="counter">{{ skill.percentage }}</span>%</h4>
@@ -66,8 +66,8 @@
                                 </div>
                             </div>
                             {% endfor %}
-                            
-                       
+
+
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <ul class="list">
-                            
+
                             {% for experience in experiences %}
                                 <li>
                                     <span></span>
@@ -114,32 +114,39 @@
                                     </div>
                             </li>
                             {% endfor %}
-                            
+
                         </ul>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <ul class="list">
-                            {% for education in educations %}
-                                <li>
-                                    <span></span>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <p>{{ education.start_date|date:"M Y" }} -
-                                                {% if education.end_date %}
-                                                  {{ education.end_date|date:"M Y" }}
-                                                {% else %}
-                                                 Present
-                                                {% endif %}
-                                            </p>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>{{ education.school_name }}</h4>
-                                            <p>{{ education.major }}<br/>{{ education.department }}</p>
-                                        </div>
-                                    </div>
-                            </li>
-                           {% endfor %}
-                        </ul>
+                            <ul class="list">
+    {% for education in educations %}
+        <li>
+            <span></span>
+            <div class="media">
+                <div class="d-flex">
+                    <p>{{ education.start_date|date:"M Y" }} -
+                        {% if education.end_date %}
+                            {{ education.end_date|date:"M Y" }}
+                        {% else %}
+                            Present
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="media-body">
+                    <h4>
+                        {% if education.url %}
+                            <a href="{{ education.url }}">{{ education.school_name }}</a>
+                        {% else %}
+                            {{ education.school_name }}
+                        {% endif %}
+                    </h4>
+                    <p>{{ education.major }}<br/>{{ education.department }}</p>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+
                     </div>
                 </div>
             </div>
