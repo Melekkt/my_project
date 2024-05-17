@@ -3,8 +3,8 @@ from myCv.models import GeneralSetting, ImageSettings, Skill, Experience, Educat
 
 
 # Create your views here.
-def index(request):
 
+def layout(request):
     site_title = GeneralSetting.objects.get(name='site_title').parameters
     site_keywords = GeneralSetting.objects.get(name='site_keywords').parameters
     site_description = GeneralSetting.objects.get(name='site_description').parameters
@@ -13,18 +13,15 @@ def index(request):
     home_banner_description = GeneralSetting.objects.get(name='home_banner_description').parameters
     about_myself_welcome = GeneralSetting.objects.get(name='about_myself_welcome').parameters
     about_myself_footer = GeneralSetting.objects.get(name='about_myself_footer').parameters
+    social_media = SocialMedia.objects.all()
 
-    #image
+    # image
     header_logo = ImageSettings.objects.get(name='header_logo').file
     home_banner_image = ImageSettings.objects.get(name='home_banner_image').file
     site_favicon = ImageSettings.objects.get(name='site_favicon').file
 
-    # Skills
-    skills = Skill.objects.all().order_by('order')
+    documents = Document.objects.all()
 
-    experiences = Experience.objects.all()
-    educations = Education.objects.all().order_by('-start_date')
-    social_media = SocialMedia.objects.all()
     context = {
         'site_title': site_title,
         'site_keywords': site_keywords,
@@ -37,11 +34,24 @@ def index(request):
         'header_logo': header_logo,
         'home_banner_image': home_banner_image,
         'site_favicon': site_favicon,
+        'documents': documents,
+        'social_media': social_media,
+
+    }
+    return context
+def index(request):
+
+
+    # Skills
+    skills = Skill.objects.all().order_by('order')
+
+    experiences = Experience.objects.all()
+    educations = Education.objects.all().order_by('-start_date')
+    context = {
         'skills': skills,
         'experiences': experiences,
         'educations': educations,
-        'social_media': social_media,
-    }
+        }
     return render(request, 'index.html',context=(context))
 
 def redirect_urls(request, slug):
