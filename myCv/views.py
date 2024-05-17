@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from myCv.models import GeneralSetting, ImageSettings, Skill, Experience, Education, SocialMedia
+from django.shortcuts import render, redirect, get_object_or_404
+from myCv.models import GeneralSetting, ImageSettings, Skill, Experience, Education, SocialMedia, Document
 
 
 # Create your views here.
@@ -43,3 +43,7 @@ def index(request):
         'social_media': social_media,
     }
     return render(request, 'index.html',context=(context))
+
+def redirect_urls(request, slug):
+    doc = get_object_or_404(Document, slug=slug)
+    return redirect(doc.file.url)
