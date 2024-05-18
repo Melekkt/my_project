@@ -343,7 +343,7 @@ button:focus {
     min-height: 780px;
     z-index: 1; }
     .blog_banner .banner_inner .overlay {
-      background: url(../img/banner/banner-2.jpg) no-repeat scroll center center;
+      background: url(../img/banner/banner-2.jpg) no-repeat scroll center;
       opacity: .5;
       height: 125%;
       position: absolute;
@@ -1000,7 +1000,7 @@ button:focus {
   position: relative; }
   .reservation_form_area .res_form_inner:before {
     content: "";
-    background: url(../img/contact-shap-1.png);
+    background: #fff;
     position: absolute;
     left: -125px;
     height: 421px;
@@ -1008,6 +1008,21 @@ button:focus {
     top: 50%;
     transform: translateY(-50%); }
   .reservation_form_area .res_form_inner:after {
+    content: "";
+    position: absolute;
+    right: -125px;
+    height: 421px;
+    width: 98px;
+    top: 50%;
+    transform: translateY(-50%); }
+
+.reservation_form_area .res_form_inner:after {
+}
+
+.reservation_form_area .res_form_inner:after {
+}
+
+.reservation_form_area .res_form_inner:after  {
     content: "";
     background: url(../img/contact-shap-2.png);
     position: absolute;
@@ -1093,8 +1108,7 @@ button:focus {
   .contact_info .info_item h6 {
     font-size: 16px;
     line-height: 24px;
-    color: "Roboto", sans-serif;
-    font-weight: bold;
+   font-weight: 300;
     margin-bottom: 0px;
     color: #222222; }
     .contact_info .info_item h6 a {
@@ -2521,13 +2535,17 @@ h6 {
     .tools_expert .skill_main .skill_item:last-child {
       margin-bottom: 0px; }
     .tools_expert .skill_main .skill_item h4 {
-      text-align: none;
-      font-size: 14px;
+      font-size: 36px;
       font-family: "Roboto", sans-serif;
       font-weight: 500;
       color: #222222;
       margin-bottom: 15px; }
-    .tools_expert .skill_main .skill_item .progress_br {
+
+.tools_expert .skill_main .skill_item h4 {
+  text-align: none;
+}
+
+.tools_expert .skill_main .skill_item .progress_br {
       border: 1px solid #eeeeee;
       padding: 5px;
       border-radius: 10px; }
