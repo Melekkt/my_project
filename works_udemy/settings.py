@@ -9,12 +9,19 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+
 from ctypes import cast
+import os
 from pathlib import Path
 import environ
 
-env = environ.Env(DEBUG=(bool, True))
-environ.Env.read_env()
+
+
+SECRET_KEY = (os.getenv('SECRET_KEY', 'django-insecure-7*2evg-*@ym542s%9o7ast8vtz6lc_!@36ja)ss*v37ng^@ou='))
+
+env = environ.Env(
+    DEBUG=(bool, True)
+)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,9 +29,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 DEBUG = env("DEBUG")
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list)# Application definition
+env = environ.Env()
+environ.Env.read_env()
+
+SECRET_KEY = env("SECRET_KEY")
+
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list)  # Application definition
+CSRF_TRUSTED_ORIGINS=['https://*.melekteke.com','http://*.melekteke.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -124,3 +136,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_URL = env('EMAIL_URL')
+
+vars().update(env.email_url())
+DEFAULT_FROM_EMAIL = 'Melek TEKE <melekteke154@gmail.com>'
+EMAIL_BACKEND = 'django.myCv.mail.backends.smtp.EmailBackend'
+#SECURE_SSL_REDIRECT = env('SECURE_SSL_REDIRECT')
+#SESSION_COOKIE_SECURE = env('SESSION_COOKIE_SECURE')
+#CSRF_COOKIE_SECURE = env('CSRF_COOKIE_SECURE')
