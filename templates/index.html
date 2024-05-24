@@ -21,8 +21,7 @@
                                 <ul class="list basic_info">
                                     <li><a href="javascript:void(0)"><i class="lnr lnr-calendar-full"></i> 25 November, 2002</a></li>
                                     <li><a href="tel:+905323941254"><i class="lnr lnr-phone-handset"></i> +90 (532) 394 1254</a></li>
-                                    <li><a href="mailto:melek.teke@stu.pirireis.edu.tr"><i class="lnr lnr-envelope"></i>melek.teke@stu.pirireis.edu.tr</a></li>
-                                    <li><a href="#"><i class="lnr lnr-home"></i>Kocaeli/Darıca</a></li>
+                                    <li><a href="mailto:melek.teke@stu.pirireis.edu.tr"><i class="lnr lnr-envelope"></i>melek.teke@stu.pirireis.edu.tr</a></li><li><a href="#"><i class="lnr lnr-home"></i>Kocaeli/Darıca</a></li>
                                 </ul>
                                 <ul class="list personal_social">
                                     {% for social in social_media %}
@@ -48,23 +47,24 @@
                     <div class="welcome_text">
                         <h4>About Myself</h4>
                         <p>{{ about_myself_welcome }}</p>
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="tools_expert">
                         <div class="skill_main">
 
-                    {% for skill in skills %}
-                        <div class="col-md-6">
-                            <p style="margin-top: 30px; font-weight: bold;">{{ skill.name }} {{ skill.percentage }}%</p>
-                            <div class="progress" style="height: 15px;">
-                                <div class="progress-bar" style="width: {{ skill.percentage }}%;" role="progressbar"
-                                     aria-valuenow="{{ skill.percentage }}" aria-valuemin="0"
-                                     aria-valuemax="100"></div>
+                         {% for skill in skills %}
+                            <div class="skill_item">
+                                 <h4>{{ skill.name }} <span class="counter">{{ skill.percentage }}</span>%</h4>
+                                 <div class="progress_br">
+                                      <div class="progress">
+                                          <div class="progress-bar" role="progressbar" aria-valuenow="{{ skill.percentage }}"
+                                               aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                            {% endfor %}
 
 
                         </div>
@@ -153,8 +153,7 @@
     </section>
     <!--================End My Tabs Area =================-->
 
-    
 
-    
+
+
 {% endblock %}
-
