@@ -55,17 +55,16 @@
                     <div class="tools_expert">
                         <div class="skill_main">
 
-                         {% for skill in skills %}
-                            <div class="skill_item">
-                                 <h4>{{ skill.name }} <span class="counter">{{ skill.percentage }}</span>%</h4>
-                                 <div class="progress_br">
-                                      <div class="progress">
-                                          <div class="progress-bar" role="progressbar" aria-valuenow="{{ skill.percentage }}"
-                                               aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
+                    {% for skill in skills %}
+                        <div class="col-md-6">
+                            <p style="margin-top: 30px; font-weight: bold;">{{ skill.name }} {{ skill.percentage }}%</p>
+                            <div class="progress" style="height: 15px;">
+                                <div class="progress-bar" style="width: {{ skill.percentage }}%;" role="progressbar"
+                                     aria-valuenow="{{ skill.percentage }}" aria-valuemin="0"
+                                     aria-valuemax="100"></div>
                             </div>
-                            {% endfor %}
+                        </div>
+                    {% endfor %}
 
 
                         </div>
