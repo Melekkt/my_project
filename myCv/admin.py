@@ -26,6 +26,8 @@ class ImageSettingsAdmin(admin.ModelAdmin):
         model = ImageSettings
 
 
+
+
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
     list_display = ['id', 'order', 'name', 'percentage', 'updated_date', 'created_date']
